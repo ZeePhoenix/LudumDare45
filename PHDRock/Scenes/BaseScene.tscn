@@ -1,18 +1,70 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Images/grassBkg.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Images/player/Stone_04.png" type="Texture" id=3]
+[ext_resource path="res://Images/player/Stone_05.png" type="Texture" id=4]
+[ext_resource path="res://Images/player/Stone_06.png" type="Texture" id=5]
+[ext_resource path="res://Images/player/Stone_07.png" type="Texture" id=6]
+[ext_resource path="res://Images/player/Stone_08.png" type="Texture" id=7]
+[ext_resource path="res://Images/player/Stone_09.png" type="Texture" id=8]
+[ext_resource path="res://Images/player/Stone_10.png" type="Texture" id=9]
+[ext_resource path="res://Images/player/Stone_11.png" type="Texture" id=10]
+[ext_resource path="res://Images/player/Stone_12.png" type="Texture" id=11]
+[ext_resource path="res://Images/player/Stone_13.png" type="Texture" id=12]
+[ext_resource path="res://Images/player/Stone_14.png" type="Texture" id=13]
+[ext_resource path="res://Images/player/Stone_15.png" type="Texture" id=14]
+[ext_resource path="res://Images/player/Stone_00.png" type="Texture" id=15]
+[ext_resource path="res://Images/player/Stone_01.png" type="Texture" id=16]
+[ext_resource path="res://Images/player/Stone_02.png" type="Texture" id=17]
+[ext_resource path="res://Images/player/Stone_03.png" type="Texture" id=18]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "right",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "left",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "up",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "down",
+"speed": 8.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 24.2664 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-script = ExtResource( 1 )
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 0, -0.135273 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
-texture = ExtResource( 2 )
+[node name="player" type="KinematicBody2D" parent="."]
+position = Vector2( 33.8415, 32.0351 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-scale = Vector2( 3, 3 )
+[node name="sprite" type="AnimatedSprite" parent="player"]
+frames = SubResource( 2 )
+animation = "up"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2( 0, 1.62331 )
+scale = Vector2( 1.5, 1.2 )
 shape = SubResource( 1 )

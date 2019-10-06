@@ -16,7 +16,15 @@ _global_script_class_icons={
 [application]
 
 config/name="PHDRock"
+run/main_scene="res://Scenes/BaseScene.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/resizable=false
+window/vsync/use_vsync=false
+window/per_pixel_transparency/allowed=true
+window/per_pixel_transparency/enabled=true
 
 [input]
 
